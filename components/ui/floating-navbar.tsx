@@ -27,10 +27,12 @@ export const FloatingNav = ({
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
-      const prevScroll = scrollYProgress.getPrevious() ?? 0;
-      if (scrollYProgress.get() < 0.05) {
+      // Show navbar when near top of page
+      if (current < 0.05) {
         setVisible(true);
       } else {
+        // Show navbar when scrolling up, hide when scrolling down
+        const prevScroll = scrollYProgress.getPrevious() ?? 0;
         setVisible(current - prevScroll < 0);
       }
     }
