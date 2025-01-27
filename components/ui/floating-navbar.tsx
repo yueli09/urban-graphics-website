@@ -5,6 +5,7 @@ import {
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
+  HTMLMotionProps,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -15,13 +16,16 @@ interface NavItem {
   icon?: React.ReactNode;
 }
 
+interface FloatingNavProps extends Omit<HTMLMotionProps<"div">, "children"> {
+  navItems: NavItem[];
+  className?: string;
+}
+
 export const FloatingNav = ({
   navItems,
   className,
-}: {
-  navItems: NavItem[];
-  className?: string;
-}) => {
+  ...props
+}: FloatingNavProps) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
 
@@ -56,6 +60,7 @@ export const FloatingNav = ({
           "flex max-w-fit fixed top-5 inset-x-0 mx-auto bg-white/70 dark:bg-zinc-800/70 backdrop-blur-lg border border-white/[0.2] dark:border-white/[0.1] rounded-full shadow-[0_2px_20px_-2px_rgba(0,0,0,0.1)] dark:shadow-[0_2px_20px_-2px_rgba(255,255,255,0.1)] px-8 py-3 items-center justify-center space-x-6 z-[5000]",
           className
         )}
+        {...props}
       >
         {navItems.map((item: NavItem, index: number) => (
           <Link
