@@ -86,8 +86,8 @@ export function Testimonials() {
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
           <div className="relative">
             <div className="text-4xl text-primary/20 mb-4">&ldquo;</div>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              {testimonials[currentIndex].quote}
+            <p className="text-sm text-zinc-600 dark:text-zinc-300">
+              &ldquo;{testimonials[currentIndex].quote}&rdquo;
             </p>
             <div className="text-right">
               <h4 className="font-semibold text-foreground">

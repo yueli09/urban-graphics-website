@@ -1,20 +1,22 @@
 "use client"
 
+import React from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Mail, Phone, MapPin } from "lucide-react"
+import Link from "next/link"
 
 interface FooterProps {
   companyName: string;
-  links: Array<{
+  links?: Array<{
     label: string;
     href: string;
   }>;
 }
 
-export function Footerdemo({ companyName, links }: FooterProps) {
+export function Footerdemo({ companyName = "Urban Graphics", links = [] }: FooterProps) {
   return (
-    <footer className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-t border-border/50">
+    <footer className="w-full py-12 bg-white dark:bg-zinc-900">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
