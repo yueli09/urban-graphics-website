@@ -4,7 +4,6 @@ import React from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Mail, Phone, MapPin } from "lucide-react"
-import Link from "next/link"
 
 interface FooterProps {
   companyName: string;
