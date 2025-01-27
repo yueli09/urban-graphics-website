@@ -1,5 +1,8 @@
 "use client";
 
+import { ThemeToggle } from "@/components/theme-toggle";
+import { LanguageSwitch } from "@/components/ui/language-switch";
+import { NavigationMenu } from "@/components/ui/nav-items";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Feature } from "@/components/ui/feature-section-with-grid";
 import { Testimonials } from "@/components/ui/testimonials";
@@ -7,8 +10,6 @@ import { Case } from "@/components/ui/cases-with-infinite-scroll";
 import { Footerdemo } from "@/components/ui/footer-section";
 import { FaqSection } from "@/components/ui/faq-section";
 import { LanguageProvider } from "@/components/ui/language-context";
-import { LanguageSwitch } from "@/components/ui/language-switch";
-import { useLanguage } from "@/components/ui/language-context";
 import { motion } from "framer-motion";
 
 const SIGNAGE_FAQS = [
@@ -85,7 +86,9 @@ function PageContent() {
 
   return (
     <main className="min-h-screen bg-zinc-50 dark:bg-zinc-900">
+      <ThemeToggle />
       <LanguageSwitch />
+      <NavigationMenu />
       
       {/* Hero Section */}
       <AuroraBackground>
