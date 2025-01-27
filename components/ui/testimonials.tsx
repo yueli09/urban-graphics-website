@@ -4,7 +4,13 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const testimonials = [
+interface Testimonial {
+  quote: string;
+  name: string;
+  title: string;
+}
+
+const testimonials: Testimonial[] = [
   {
     quote: "Urban Graphics transformed our storefront with their stunning LED signage. The quality and attention to detail is exceptional, and their team was professional throughout the entire process.",
     name: "Michael C.",
@@ -79,7 +85,7 @@ export function Testimonials() {
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
           <div className="relative">
-            <div className="text-4xl text-primary/20 mb-4">"</div>
+            <div className="text-4xl text-primary/20 mb-4">&ldquo;</div>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
               {testimonials[currentIndex].quote}
             </p>

@@ -9,15 +9,17 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+interface NavItem {
+  name: string;
+  link: string;
+  icon?: React.ReactNode;
+}
+
 export const FloatingNav = ({
   navItems,
   className,
 }: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: React.ReactNode;
-  }[];
+  navItems: NavItem[];
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
@@ -25,7 +27,7 @@ export const FloatingNav = ({
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
-      let direction = current! - scrollYProgress.getPrevious()!;
+      const direction = current - (scrollYProgress.getPrevious() ?? 0);
 
       if (scrollYProgress.get() < 0.05) {
         setVisible(true);
@@ -58,9 +60,9 @@ export const FloatingNav = ({
           className
         )}
       >
-        {navItems.map((navItem: any, idx: number) => (
+        {navItems.map((navItem: NavItem, idx: number) => (
           <Link
-            key={`link=${idx}`}
+            key={`link-${idx}`}
             href={navItem.link}
             className={cn(
               "relative items-center flex space-x-1 text-zinc-800 dark:text-zinc-200 hover:text-primary dark:hover:text-primary transition-colors duration-200"

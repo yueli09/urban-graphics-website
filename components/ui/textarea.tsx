@@ -1,9 +1,16 @@
+"use client";
+
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
 export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  /** Additional className to be applied to the textarea */
+  className?: string;
+  /** Rows to display by default */
+  rows?: number;
+}
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => {
